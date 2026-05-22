@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using GameServer;
 using GameServer.Entities;
+using Lucene.Net.Support;
 using SkillBridge.Message;
 
 namespace Network
