@@ -1,4 +1,5 @@
-﻿using Network;
+﻿using Common;
+using Network;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Services
 {
-    internal class HelloWorldService
+    class HelloWorldService : Singleton<HelloWorldService>
     {
         public void Init()
         {
@@ -17,7 +18,13 @@ namespace GameServer.Services
 
         public void Start()
         {
-            
+              MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<FirstTestRequest>(this.OnFirstTestRequest);
+        }
+
+        void OnFirstTestRequest(NetConnection<NetSession> sender, FirstTestRequest request)
+        {
+            Log.InfoFormat("Receive FirstTestRequest :Helloworld{0}", request.Helloworld);
+        
         }
         public void Stop()
         {

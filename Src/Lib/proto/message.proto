@@ -141,8 +141,8 @@ message NetMessageResponse{
 // User Protocol
 
 message FirstTestRequest{
-	string user = 1;
-	string passward = 2;
+	string helloworld = 1;
+	
 }
 
 
